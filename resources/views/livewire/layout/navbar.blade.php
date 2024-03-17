@@ -13,7 +13,12 @@
                       <li><a href="/" class="{{ Request::is('/') ? 'active' : '' }}">Home</a></li>
                       <li><a href="/shop" class="{{ Request::is('shop') ? 'active' : '' }}">Our Shop</a></li>
                       <li><a href="/contact" class="{{ Request::is('contact') ? 'active' : '' }}">Contact Us</a></li>
-                      <li><a href="{{ route('login') }}">Sign In</a></li>
+                      <li>
+                        @auth
+                        <a href="/">{{ Auth::user()->name }}</a></li>
+                            @else
+                            <a href="{{ route('login') }}">Sign In</a></li>
+                        @endauth
                   </ul>
                     <a class='menu-trigger'>
                         <span>Menu</span>
